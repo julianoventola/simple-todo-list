@@ -9,12 +9,17 @@ const todoRoutes = require('./routes/todos');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
 
+app.use(express.static(__dirname+'/public'));
+//Set as default views folder to render file
+app.use(express.static(__dirname+'/views'));
+
+
 //set the default route as "localhost/api/todos"
 app.use('/api/todos', todoRoutes);
 
 
 app.get("/", function name(req, res) {
-    res.send("Achouuu!");
+    res.sendFile("index.html");
 })
 
 
